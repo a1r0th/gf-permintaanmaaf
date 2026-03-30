@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk Sindi — Halaman 1</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero { text-align: center; padding: 3.5rem 1rem 2rem; }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 500;
+      color: var(--pink);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title em { font-style: italic; color: var(--pink-dk); }
+    .hero-sub { font-size: 14px; color: var(--text-m); margin-bottom: 1.75rem; }
+    .hearts-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 1.2rem; }
+    .fact-box {
+      background: var(--white);
+      border: 1px solid #F0D9E2;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+    }
+    .fact-box p { font-size: 14px; color: var(--text-m); line-height: 1.75; }
+    .fact-box p + p { margin-top: 0.75rem; }
+    .nav-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; }
+    .prev-btn {
+      background: transparent;
+      color: var(--pink);
+      border: 1px solid var(--pink-l);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="petals-bg" id="petalsBg"></div>
+
+  <div class="page active">
+    <div class="wrap">
+
+      <div class="hero">
+        <div class="badge">halaman 1 dari 4 💌</div>
+        <div class="hearts-row">
+          <span class="heart-icon">❤️</span>
+          <span class="heart-icon">❤️</span>
+          <span class="heart-icon">❤️</span>
+        </div>
+        <h1 class="hero-title">Sindi, tolong<br><em>maafin aiyy</em></h1>
+        <p class="hero-sub">surat resmi permohonan maaf yang sangat serius dan tidak alay </p>
+      </div>
+
+      <div class="counter-box">
+        <div class="counter-label">sudah bersama selama...</div>
+        <div class="counter-nums">
+          <div class="cnum"><div class="cnum-val" id="days">000</div><div class="cnum-lab">hari</div></div>
+          <div class="cnum"><div class="cnum-val" id="hours">00</div><div class="cnum-lab">jam</div></div>
+          <div class="cnum"><div class="cnum-val" id="mins">00</div><div class="cnum-lab">menit</div></div>
+          <div class="cnum"><div class="cnum-val" id="secs">00</div><div class="cnum-lab">detik</div></div>
+        </div>
+      </div>
+
+      <div class="fact-box">
+        <p>🔬 <strong>fakta ilmiah</strong> yang perlu kamu tahu:</p>
+        <p>menurut penelitian yang aku karang sendiri, hidup tanpa senyumanmu <strong>73% lebih hampa</strong>, 89% lebih sepi, dan 100% tidak enak dijalani.</p>
+        <p>solusi satu-satunya: maafin aku sesegera mungkin demi kesehatan bersama 🏥</p>
+      </div>
+
+      <div class="nav-row">
+        <a href="index.html" class="prev-btn">← kembali</a>
+        <a href="halaman2.html" class="next-btn" style="margin:0;">surat maafku →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    initPetals();
+    initCounter();
+
+    // Music resume functionality
+    const bgMusic = document.getElementById('bgMusic');
+    const savedTime = localStorage.getItem('musicTime');
+    if (savedTime) {
+      bgMusic.currentTime = parseFloat(savedTime);
+    }
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('musicTime', bgMusic.currentTime);
+    });
+  </script>
+</body>
+</html>

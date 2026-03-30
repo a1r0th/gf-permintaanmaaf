@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk S — Mini Games</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-header { text-align: center; padding: 2.5rem 1rem 1.5rem; }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+      color: var(--pink);
+      margin-bottom: 0.4rem;
+    }
+    .page-header h1 em { font-style: italic; color: var(--pink-dk); }
+    .page-header p { font-size: 13px; color: var(--text-m); }
+    .nav-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; }
+    .prev-btn {
+      background: transparent; color: var(--pink);
+      border: 1px solid var(--pink-l); padding: 12px 24px;
+      border-radius: 30px; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      text-decoration: none; display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="petals-bg" id="petalsBg"></div>
+
+  <div class="page active">
+    <div class="wrap">
+
+      <div class="page-header">
+        <div class="badge">halaman 3 dari 4 🎮</div>
+        <h1>Yuk Main<br><em>Mini Games!</em></h1>
+        <p>sambil ketawa, maafin aiyy ya 🙏</p>
+      </div>
+
+      <!-- GAME 1 -->
+      <div class="card">
+        <div class="card-tag">🎮 mini game 1</div>
+        <h2 class="card-title">Tombol Keputusan Tertinggi</h2>
+        <div id="forgiveGame">
+          <p class="forgive-q">apakah kamu mau maafin aku?</p>
+          <div class="btn-row" id="btnRow">
+            <button class="btn-yes" onclick="forgiveYes()">iya, aku maafin ❤️</button>
+            <button class="btn-no" id="btnNo" onclick="moveNoBtn()">nggak mau</button>
+          </div>
+          <p class="forgive-win" id="forgiveWin"></p>
+        </div>
+      </div>
+
+      <!-- GAME 2 -->
+      <div class="card">
+        <div class="card-tag">🎮 mini game 2</div>
+        <h2 class="card-title">Kumpulin Cintaku!</h2>
+        <p style="font-size:13px;color:var(--text-m);margin-bottom:0.75rem;">klik "kirim cinta" lalu tangkap semua hati sebelum menghilang ✨</p>
+        <div class="heart-field" id="heartField"></div>
+        <div class="heart-score-wrap">
+          <div class="heart-score-num" id="heartScore">0</div>
+          <div class="heart-score-lbl">hati terkumpul</div>
+        </div>
+        <button class="btn-spawn" onclick="spawnHearts()">kirim cinta ❤️</button>
+      </div>
+
+      <!-- GAME 3 -->
+      <div class="card">
+        <div class="card-tag">🎮 mini game 3</div>
+        <h2 class="card-title">Quiz: Seberapa Kenal Kamu Sama Aiyy?</h2>
+        <div id="quizArea">
+          <p class="quiz-question" id="quizQ"></p>
+          <div class="quiz-opts" id="quizOpts"></div>
+          <p class="quiz-feedback" id="quizFb"></p>
+          <div class="quiz-footer">
+            <span class="quiz-prog" id="quizProg">soal 1 / 4</span>
+            <button class="btn-next" id="btnNext" onclick="nextQ()">soal berikutnya →</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quizResult">
+          <div class="quiz-result-score" id="qFinalScore"></div>
+          <div class="quiz-result-msg" id="qFinalMsg"></div>
+        </div>
+      </div>
+
+      <!-- GAME 4 -->
+      <div class="card">
+        <div class="card-tag">🎮 mini game 4</div>
+        <h2 class="card-title">Scratch Card — Ada Hadiah!</h2>
+        <p class="scratch-hint">gesek kotak di bawah ini untuk reveal pesan rahasia 🎁</p>
+        <canvas id="scratchCanvas" width="300" height="110"></canvas>
+        <div class="scratch-msg" id="scratchMsg"></div>
+      </div>
+
+      <div class="nav-row">
+        <a href="halaman2.html" class="prev-btn">← kembali</a>
+        <a href="halaman4.html" class="next-btn" style="margin:0;">halaman terakhir →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    initPetals();
+    initForgiveGame();
+    initHeartGame();
+    initQuiz();
+    initScratch();
+
+    // Music resume functionality
+    const bgMusic = document.getElementById('bgMusic');
+    const savedTime = localStorage.getItem('musicTime');
+    if (savedTime) {
+      bgMusic.currentTime = parseFloat(savedTime);
+    }
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('musicTime', bgMusic.currentTime);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk Sindi — Penutup</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-header { text-align: center; padding: 2.5rem 1rem 1.5rem; }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+      color: var(--pink);
+      margin-bottom: 0.4rem;
+    }
+    .page-header h1 em { font-style: italic; color: var(--pink-dk); }
+    .page-header p { font-size: 13px; color: var(--text-m); }
+
+    /* big heart animation */
+    .big-heart-wrap { text-align: center; padding: 2rem 0; }
+    .big-heart {
+      font-size: 5rem;
+      display: inline-block;
+      animation: bigpulse 1.4s ease-in-out infinite;
+    }
+    @keyframes bigpulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+
+    /* floating hearts on click */
+    .heart-burst { position: fixed; pointer-events: none; z-index: 999; font-size: 1.8rem; animation: burst 1.2s ease forwards; }
+    @keyframes burst { 0%{transform:translateY(0) scale(0.5);opacity:1} 100%{transform:translateY(-120px) scale(1.2);opacity:0} }
+
+    .quote-card {
+      background: linear-gradient(135deg, var(--pink-bg) 0%, #fff0f5 100%);
+      border: 1px solid var(--pink-l);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .quote-card blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--pink-dk);
+      line-height: 1.7;
+    }
+    .quote-card cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 12px;
+      color: var(--pink-md);
+      font-style: normal;
+      letter-spacing: 0.05em;
+    }
+
+    .final-msg {
+      text-align: center;
+      padding: 1.5rem 1rem 0.5rem;
+    }
+    .final-msg h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--pink);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+    .final-msg h2 em { font-style: italic; color: var(--pink-dk); }
+    .final-msg p { font-size: 14px; color: var(--text-m); line-height: 1.7; }
+
+    .tap-hint {
+      font-size: 12px;
+      color: var(--pink-md);
+      text-align: center;
+      margin-top: 0.5rem;
+      animation: pulse-hint 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-hint { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+    .nav-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 2rem; }
+    .prev-btn {
+      background: transparent; color: var(--pink);
+      border: 1px solid var(--pink-l); padding: 12px 24px;
+      border-radius: 30px; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      text-decoration: none; display: inline-block;
+    }
+    .restart-btn {
+      background: transparent; color: var(--text-m);
+      border: 1px solid #E8D0D9; padding: 12px 24px;
+      border-radius: 30px; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      text-decoration: none; display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="petals-bg" id="petalsBg"></div>
+
+  <div class="page active">
+    <div class="wrap">
+
+      <div class="page-header">
+        <div class="badge">halaman 4 dari 4 🌸</div>
+        <h1>Penutup yang<br><em>Sangat Dramatis</em></h1>
+        <p>ini bagian terakhir, semoga hati kamu luluh 🥺</p>
+      </div>
+
+      <!-- Music -->
+      <div class="music-bar">
+        <div class="music-disc">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <div class="music-info">
+          <div class="music-name">Semenjak Ada Dirimu</div>
+          <div class="music-artist">HiVi! — lagu kita ❤️</div>
+        </div>
+        <div class="music-waves">
+          <div class="mwave"></div><div class="mwave"></div>
+          <div class="mwave"></div><div class="mwave"></div>
+          <div class="mwave"></div>
+        </div>
+      </div>
+
+      <!-- Big Heart -->
+      <div class="big-heart-wrap">
+        <span class="big-heart" id="bigHeart">❤️</span>
+        <p class="tap-hint">tap hatinya ✨</p>
+      </div>
+
+      <!-- Quote -->
+      <div class="quote-card">
+        <blockquote>"semenjak ada dirimu, hidupku lebih berwarna. dan tanpa senyumanmu, semuanya jadi abu-abu."</blockquote>
+        <cite>— seseorang yang sangat merindukanmu</cite>
+      </div>
+
+      <!-- Final Message -->
+      <div class="final-msg">
+        <h2>S, kamu <em>segalanya</em><br>buatku ❤️</h2>
+        <p>
+          aku tahu aku nggak sempurna. aku tahu aku kadang nyebelin.<br>
+          tapi satu hal yang pasti — aku beneran sayang sama kamu.<br><br>
+          tolong balas pesanku ya. aku udah mati gaya nunggu 😭
+        </p>
+      </div>
+
+      <div class="divider">❤️</div>
+
+      <div class="card" style="text-align:center;">
+        <div class="card-tag">📊 statistik kangen</div>
+        <h2 class="card-title">Fakta tentang Aiyy Tanpa Sindi</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:0.5rem;">
+          <div style="background:var(--pink-bg);border-radius:10px;padding:0.9rem;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--pink);">99%</div>
+            <div style="font-size:12px;color:var(--text-m);">waktu mikirin kamu</div>
+          </div>
+          <div style="background:var(--pink-bg);border-radius:10px;padding:0.9rem;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--pink);">0%</div>
+            <div style="font-size:12px;color:var(--text-m);">fokus kalau kamu diam</div>
+          </div>
+          <div style="background:var(--pink-bg);border-radius:10px;padding:0.9rem;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--pink);">∞</div>
+            <div style="font-size:12px;color:var(--text-m);">rasa sayang buat kamu</div>
+          </div>
+          <div style="background:var(--pink-bg);border-radius:10px;padding:0.9rem;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--pink);">1</div>
+            <div style="font-size:12px;color:var(--text-m);">Sindi yang aku inginkan</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <a href="halaman3.html" class="prev-btn">← kembali</a>
+        <a href="index.html" class="restart-btn">mulai lagi 🔄</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    initPetals();
+
+    // tap heart to burst
+    const bigHeart = document.getElementById('bigHeart');
+    const emojis = ['❤️','💕','💗','💖','💘','💝'];
+    bigHeart.addEventListener('click', function(e) {
+      for (let i = 0; i < 6; i++) {
+        const h = document.createElement('span');
+        h.className = 'heart-burst';
+        h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        const angle = Math.random() * 360;
+        const dist  = 40 + Math.random() * 60;
+        h.style.left = (e.clientX + Math.cos(angle) * dist - 16) + 'px';
+        h.style.top  = (e.clientY + Math.sin(angle) * dist - 16) + 'px';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 1200);
+      }
+    });
+
+    // Music resume functionality
+    const bgMusic = document.getElementById('bgMusic');
+    const savedTime = localStorage.getItem('musicTime');
+    if (savedTime) {
+      bgMusic.currentTime = parseFloat(savedTime);
+    }
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('musicTime', bgMusic.currentTime);
+    });
+  </script>
+</body>
+</html>

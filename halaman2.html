@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk S — Surat Maaf</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-header { text-align: center; padding: 2.5rem 1rem 1.5rem; }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+      color: var(--pink);
+      margin-bottom: 0.4rem;
+    }
+    .page-header h1 em { font-style: italic; color: var(--pink-dk); }
+    .page-header p { font-size: 13px; color: var(--text-m); }
+    .nav-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; }
+    .prev-btn {
+      background: transparent; color: var(--pink);
+      border: 1px solid var(--pink-l); padding: 12px 24px;
+      border-radius: 30px; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      text-decoration: none; display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="petals-bg" id="petalsBg"></div>
+
+  <div class="page active">
+    <div class="wrap">
+
+      <div class="page-header">
+        <div class="badge">halaman 2 dari 4 📜</div>
+        <h1>Surat untuk<br><em>Sindi yang Tersayang</em></h1>
+        <p>kubuka hati, kutulis jujur</p>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">📜 surat resmi</div>
+        <h2 class="card-title">Surat Permohonan Maaf Dari Airul Rofiq Ramadhan</h2>
+        <p class="card-body">
+          Sindi yang cantik,manis,imut,menggemaskan dan sangat baik hati,<br><br>
+          sa tau ji ko lagi marah. dan kamu berhak marah. tapi setiap detik kamu diam rasanya seperti handphone lowbat tanpa charger — gelisah, panik, nggak bisa ngapa-ngapain .<br><br>
+          aku nggak bisa berhenti mikirin kamu. aku nggak bisa fokus kalau kamu lagi diam. dan yang paling bikin aku sedih adalah nggak bisa lihat kamu senyum.<br><br>
+          aku minta maaf dengan sepenuh hati, setengah jiwa, seperempat raga, dan semua perasaan yang aku punya, tolong jangan diamkan diriq
+        </p>
+      </div>
+
+      <div class="divider">❤️</div>
+
+      <div class="card">
+        <div class="card-tag">📋 daftar tersumpah</div>
+        <h2 class="card-title">Hal-hal yang Aku Sesali</h2>
+        <ul class="sorry-list">
+          <li><span class="sorry-check">✓</span> apapun yang bikin sindi marah — aiyy minta maaf</li>
+          <li><span class="sorry-check">✓</span> kalau aiyy kurang perhatian — aiyy minta maaf</li>
+          <li><span class="sorry-check">✓</span> kalau aiyy menyebalkan — ini juga aiyy minta maaf</li>
+          <li><span class="sorry-check">✓</span> sudah berani bikin Sindi marah — ini dosa terbesar</li>
+          <li><span class="sorry-check">✓</span> semua hal lain yang mungkin aiyy lupa — tetap minta maaf</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">🌸 janjiku</div>
+        <h2 class="card-title">Yang Aku Janjikan</h2>
+        <ul class="sorry-list">
+          <li><span class="sorry-check">♡</span> akan lebih mengoreksi diri aiyy</li>
+          <li><span class="sorry-check">♡</span> akan dengerin sindi lebih baik</li>
+          <li><span class="sorry-check">♡</span> akan meminta pendapat sindi</li>
+          <li><span class="sorry-check">♡</span> akan berusaha nggak nyebelin lagi</li>
+          <li><span class="sorry-check">♡</span> akan selalu mengoreksi</li>
+        </ul>
+      </div>
+
+      <div class="nav-row">
+        <a href="halaman1.html" class="prev-btn">← kembali</a>
+        <a href="halaman3.html" class="next-btn" style="margin:0;">main games yuk →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    initPetals();
+
+    // Music resume functionality
+    const bgMusic = document.getElementById('bgMusic');
+    const savedTime = localStorage.getItem('musicTime');
+    if (savedTime) {
+      bgMusic.currentTime = parseFloat(savedTime);
+    }
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('musicTime', bgMusic.currentTime);
+    });
+  </script>
+</body>
+</html>
